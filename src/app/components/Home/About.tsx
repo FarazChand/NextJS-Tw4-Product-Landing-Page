@@ -61,7 +61,7 @@ const About = ({ imageOrder, textOrder, title, linkText }: Props) => {
         </div>
 
         {/* Image content */}
-        <div className={`${imageOrder}`}>
+        <div className={`${imageOrder} mx-auto`}>
           <Image src="/images/h1.png" alt="image" width={380} height={380} />
         </div>
       </div>
