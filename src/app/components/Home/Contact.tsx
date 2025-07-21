@@ -9,8 +9,26 @@ const Contact = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSumbit = (e: React.FormEvent) => {
+  const handleSumbit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, subject, message }),
+    });
+
+    const { success } = await res.json();
+    if (success) {
+      alert("Message sent!");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } else {
+      alert("Sending failed");
+    }
+
     console.log({ name, email, subject, message });
   };
 
